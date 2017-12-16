@@ -23,8 +23,10 @@ fi
 
 MODE=`cat /sys/class/display/mode`;
 if [ "$MODE" = "720p50hz" ]; then
+echo 720p60hz > /sys/class/display/mode
 fbset -fb /dev/fb0 -g 1280 720 1280 1440 32
 fi
+#Force 60hz since 50hz would make video choppy.
 
 MODE=`cat /sys/class/display/mode`;
 if [ "$MODE" = "1080p60hz" ]; then
@@ -38,11 +40,13 @@ fi
 
 MODE=`cat /sys/class/display/mode`;
 if [ "$MODE" = "1080i50hz" ]; then
+echo 1080i60hz > /sys/class/display/mode
 fbset -fb /dev/fb0 -g 1920 1080 1920 2160 32
 fi
 
 MODE=`cat /sys/class/display/mode`;
 if [ "$MODE" = "1080p50hz" ]; then
+echo 1080p60hz > /sys/class/display/mode
 fbset -fb /dev/fb0 -g 1920 1080 1920 2160 32
 fi
 
